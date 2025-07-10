@@ -1,0 +1,23 @@
+---
+description: having a general overview of what we want to achieve and not to loose track
+alwaysApply: false
+---
+
+Vamos a crear un sistema básico de obtención de embeddings y búsqueda semántica para una colección de texto (aproximadamente 1000-5000 mensaje de texto SMS) en un entorno Python controlado.
+
+El objetivo es:
+
+1. **Generar embeddings** para cada una de las frases usando una librería de Python pre-entrenada y fácil de usar.
+
+2. **Realizar una búsqueda semántica** dado un SMS de consulta. Es decir, encontrar los SMS originales en mi colección que sean más "similares" semánticamente al SMS de consulta.
+
+# reglas generales
+- Manten las cosas simples
+- El sistema es co-diseñado / co-operado por una persona que no es cientifico de datos pero entiende los conceptos basicos y sabe de programacion.
+- Usa python 3.13.5
+- Agrega comentarios cortos pero claros
+- Manten una estructura de carpetas simple pero ordenada y facil de reconocer
+
+
+
+

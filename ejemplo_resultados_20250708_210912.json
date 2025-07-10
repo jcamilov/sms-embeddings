@@ -1,0 +1,22 @@
+{
+  "consulta": "Hola, ¿cómo estás?",
+  "timestamp": "20250708_210912",
+  "total_resultados": 3,
+  "resultados": [
+    {
+      "texto": "Hello madam how are you ?",
+      "similitud": 0.8518886566162109,
+      "indice": 6370
+    },
+    {
+      "texto": "What you doing?how are you?",
+      "similitud": 0.8184738159179688,
+      "indice": 2918
+    },
+    {
+      "texto": "Dear how you. Are you ok?",
+      "similitud": 0.7704774141311646,
+      "indice": 5941
+    }
+  ]
+}

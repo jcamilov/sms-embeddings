@@ -11,7 +11,7 @@ from utils import exportar_resultados_json, calcular_estadisticas_similitud, for
 ARCHIVO_SMS = os.path.join('data', 'combined_limited.csv')
 EXTENSION = ARCHIVO_SMS.split('.')[-1]
 COLUMNA_TEXTO_SMS = 'sms_text'
-MODELO_EMBEDDING = 'paraphrase-multilingual-MiniLM-L12-v2'
+MODELO_EMBEDDING = 'all-MiniLM-L6-v2'
 
 # Rutas de los archivos de embeddings
 RUTA_EMBEDDINGS = os.path.join('embeddings', ARCHIVO_SMS.replace('.' + EXTENSION, '_embeddings.npy'))

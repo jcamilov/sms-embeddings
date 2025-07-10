@@ -9,7 +9,7 @@ import time
 ARCHIVO_SMS = os.path.join('data', 'combined_limited.csv')  # Ruta al archivo .CSV o .py
 EXTENSION = ARCHIVO_SMS.split('.')[-1]
 COLUMNA_TEXTO_SMS = 'sms_text'  # Nombre de la columna con los SMS
-MODELO_EMBEDDING = 'paraphrase-multilingual-MiniLM-L12-v2'
+MODELO_EMBEDDING = 'all-MiniLM-L6-v2'
 RUTA_EMBEDDINGS = os.path.join('embeddings', ARCHIVO_SMS.replace('.' + EXTENSION, '_embeddings.npy'))
 RUTA_TEXTOS = os.path.join('embeddings', ARCHIVO_SMS.replace('.' + EXTENSION, '_texts.npy'))
 

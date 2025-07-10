@@ -17,11 +17,17 @@ import json
 from datetime import datetime
 from utils import exportar_resultados_json, calcular_estadisticas_similitud, formatear_similitud
 
+# --- about the model ---
+# Model	                                   Size	    Speed	    Quality
+# all-MiniLM-L3-v2	                       ~60MB	⚡⚡⚡	    ⭐⭐
+# all-MiniLM-L6-v2	                       ~80MB	⚡⚡	      ⭐⭐⭐
+# paraphrase-multilingual-MiniLM-L12-v2	   ~117MB	⚡  	       ⭐⭐⭐⭐
+
 # --- Configuración ---
 ARCHIVO_SMS = os.path.join('data', 'combined_limited.csv')
 EXTENSION = ARCHIVO_SMS.split('.')[-1]
 COLUMNA_TEXTO_SMS = 'sms_text'
-MODELO_EMBEDDING = 'paraphrase-multilingual-MiniLM-L12-v2'
+MODELO_EMBEDDING = 'all-MiniLM-L6-v2'
 
 # Rutas de los archivos de embeddings
 RUTA_EMBEDDINGS = os.path.join('embeddings', ARCHIVO_SMS.replace('.' + EXTENSION, '_embeddings.npy'))
@@ -47,7 +53,7 @@ def cargar_sistema():
         print("Ejecuta primero: python scripts/generar_embeddings.py")
         return None, None, None
 
-def buscar_sms_similares(consulta, embeddings, textos, modelo, top_k=5):
+def buscar_sms_similares(consulta, embeddings, textos, modelo, top_k=3):
     """Busca SMS similares a la consulta."""
     embedding_consulta = modelo.encode([consulta])
     similitudes = cosine_similarity(embedding_consulta, embeddings)[0]
@@ -78,6 +84,7 @@ def mostrar_resultados(consulta, resultados):
         print(f"   💬 Texto: {resultado['texto']}")
         print("-" * 40)
 
+# Imprime en consola un par de ejemplos de SMS y estadisticas de la coleccion
 def analizar_coleccion(textos):
     """Analiza la colección de SMS."""
     print("\n📊 ANÁLISIS DE LA COLECCIÓN")
@@ -131,7 +138,7 @@ def main():
     analizar_coleccion(textos)
     
     # Ejecutar búsquedas de ejemplo
-    ejemplo_busquedas(modelo, embeddings, textos)
+    #ejemplo_busquedas(modelo, embeddings, textos)
     
     # Ejemplo de exportación
     consulta_ejemplo = "Hola, ¿cómo estás?"

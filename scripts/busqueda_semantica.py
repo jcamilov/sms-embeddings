@@ -8,7 +8,7 @@ import pandas as pd
 ARCHIVO_SMS = os.path.join('data', 'combined_limited.csv')
 EXTENSION = ARCHIVO_SMS.split('.')[-1]
 COLUMNA_TEXTO_SMS = 'sms_text'
-MODELO_EMBEDDING = 'paraphrase-multilingual-MiniLM-L12-v2'
+MODELO_EMBEDDING = 'all-MiniLM-L6-v2'
 
 # Rutas de los archivos de embeddings
 RUTA_EMBEDDINGS = os.path.join('embeddings', ARCHIVO_SMS.replace('.' + EXTENSION, '_embeddings.npy'))
@@ -27,7 +27,7 @@ def cargar_embeddings_y_textos():
         print("Ejecuta primero: python scripts/generar_embeddings.py")
         return None, None
 
-def buscar_sms_similares(consulta, embeddings, textos, modelo, top_k=5):
+def buscar_sms_similares(consulta, embeddings, textos, modelo, top_k=3):
     """
     Busca los SMS más similares a la consulta usando similitud coseno.
     
@@ -87,19 +87,19 @@ def main():
     print("\n" + "="*60)
     print("BÚSQUEDA SEMÁNTICA DE SMS")
     print("="*60)
-    print("Escribe 'salir' para terminar.")
+    print("Escribe 'salir' o 'q' para terminar.")
     print("Escribe 'ayuda' para ver comandos disponibles.")
     
     while True:
         print("\n" + "-"*40)
         consulta = input("Ingresa tu consulta SMS: ").strip()
         
-        if consulta.lower() == 'salir':
+        if consulta.lower() == 'salir' or consulta.lower() == 'q':
             print("¡Hasta luego!")
             break
         elif consulta.lower() == 'ayuda':
             print("\nComandos disponibles:")
-            print("- 'salir': Terminar el programa")
+            print("- 'salir' o 'q': Terminar el programa")
             print("- 'ayuda': Mostrar esta ayuda")
             print("- Cualquier texto: Buscar SMS similares")
             continue
@@ -109,7 +109,7 @@ def main():
         
         # Realizar búsqueda
         print(f"\nBuscando SMS similares a: '{consulta}'")
-        resultados = buscar_sms_similares(consulta, embeddings, textos, modelo, top_k=5)
+        resultados = buscar_sms_similares(consulta, embeddings, textos, modelo, top_k=3)
         
         # Mostrar resultados
         mostrar_resultados(resultados)

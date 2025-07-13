@@ -12,7 +12,7 @@ MODEL_NAME = "all-MiniLM-L6-v2"
 # IMPORTANT: 
 # Please make sure that this the headers contain at least "class" ,"sms_id", "sms_text"
 # Also, the class column should be either "smishing" or "benign" (or change it here if different)
-INPUT_FILE_PATH = "data/combined_limited.csv"  # Full path to the CSV file for generating embeddings
+INPUT_FILE_PATH = "/data/D1.csv"  # Full path to the CSV file for generating embeddings
 CLASS_SMISHING = "smishing"
 CLASS_BENIGN = "benign"
 

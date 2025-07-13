@@ -3,7 +3,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
-from config import *
+from .config import *
 
 
 # --- Configuration ---
@@ -11,14 +11,16 @@ SMS_FILE = os.path.join('data', INPUT_FILE_PATH)
 EXTENSION = SMS_FILE.split('.')[-1]
 SMS_TEXT_COLUMN = 'sms_text'
 EMBEDDING_MODEL = MODEL_NAME
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+EMBEDDINGS_DIR = os.path.join(BASE_DIR, '../embeddings')
 
 # Class-specific embeddings file paths
-SMISHING_EMBEDDINGS_PATH = os.path.join('embeddings', f'{CLASS_SMISHING}_embeddings.npy')
-SMISHING_TEXTS_PATH = os.path.join('embeddings', f'{CLASS_SMISHING}_texts.npy')
-SMISHING_IDS_PATH = os.path.join('embeddings', f'{CLASS_SMISHING}_ids.npy')
-BENIGN_EMBEDDINGS_PATH = os.path.join('embeddings', f'{CLASS_BENIGN}_embeddings.npy')
-BENIGN_TEXTS_PATH = os.path.join('embeddings', f'{CLASS_BENIGN}_texts.npy')
-BENIGN_IDS_PATH = os.path.join('embeddings', f'{CLASS_BENIGN}_ids.npy')
+SMISHING_EMBEDDINGS_PATH = os.path.join(EMBEDDINGS_DIR, f'{CLASS_SMISHING}_embeddings.npy')
+SMISHING_TEXTS_PATH = os.path.join(EMBEDDINGS_DIR, f'{CLASS_SMISHING}_texts.npy')
+SMISHING_IDS_PATH = os.path.join(EMBEDDINGS_DIR, f'{CLASS_SMISHING}_ids.npy')
+BENIGN_EMBEDDINGS_PATH = os.path.join(EMBEDDINGS_DIR, f'{CLASS_BENIGN}_embeddings.npy')
+BENIGN_TEXTS_PATH = os.path.join(EMBEDDINGS_DIR, f'{CLASS_BENIGN}_texts.npy')
+BENIGN_IDS_PATH = os.path.join(EMBEDDINGS_DIR, f'{CLASS_BENIGN}_ids.npy')
 
 def load_embeddings_and_texts_for_class(class_name):
     """Load embeddings, texts, and IDs for a specific class."""

@@ -82,13 +82,14 @@ def search_similar_sms(query, embeddings, texts, ids, model, top_k=3):
     
     return results
 
-def semantic_search_sms(sms_text, top_k=3):
+def semantic_search_sms(sms_text, top_k=3, model=None):
     """
     Perform semantic search for a given SMS text across both classes.
     
     Args:
         sms_text (str): The SMS text to search for similar messages
         top_k (int): Number of top results to return for each class
+        model: Optional pre-loaded SentenceTransformer model to prevent memory leaks
     
     Returns:
         dict: Dictionary containing search results for both classes
@@ -97,8 +98,9 @@ def semantic_search_sms(sms_text, top_k=3):
                 'benign': [list of benign results]
             }
     """
-    # Load the embedding model
-    model = SentenceTransformer(EMBEDDING_MODEL)
+    # Load the embedding model only if not provided
+    if model is None:
+        model = SentenceTransformer(EMBEDDING_MODEL)
     
     # Load embeddings, texts, and IDs for both classes
     smishing_embeddings, smishing_texts, smishing_ids = load_embeddings_and_texts_for_class(CLASS_SMISHING)

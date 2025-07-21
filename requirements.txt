@@ -1,4 +1,6 @@
 pandas
 numpy
 sentence-transformers
-scikit-learn 
+scikit-learn
+tensorflow
+tf-keras
